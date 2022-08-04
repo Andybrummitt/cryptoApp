@@ -1,13 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import CoinsList from '../components/CoinsTable/CoinsTable'
-import styles from '../styles/Home.module.css';
-import axios from 'axios';
-import CoinGecko from 'coingecko-api';
-import CoinsTable from '../components/CoinsTable/CoinsTable';
+import CoinGecko from "coingecko-api";
+import Head from "next/head";
+import CoinsTable from "../components/CoinsTable/CoinsTable";
+import styles from "../styles/Home.module.css";
 const CoinGeckoClient = new CoinGecko();
 
-export default function Home({result}) {
+export default function Home({ result }) {
   const { data } = result;
   return (
     <div className={styles.container}>
@@ -18,23 +15,21 @@ export default function Home({result}) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to CryptoSpace
-        </h1>
+        <h1 className={styles.title}>Welcome to CryptoSpace</h1>
         <h1>Coins List</h1>
         <CoinsTable data={data} />
-        </main>
-
+      </main>
     </div>
-  )
+  );
 }
 
 export async function getServerSideProps() {
   const params = {
-    order: CoinGecko.ORDER.MARKET_CAP_DESC
-}
+    order: CoinGecko.ORDER.MARKET_CAP_DESC,
+  };
+
   const result = await CoinGeckoClient.coins.markets(params);
-    return {
-      props: { result }
-    };
+  return {
+    props: { result },
+  };
 }

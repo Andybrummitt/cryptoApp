@@ -2,7 +2,8 @@ import Link from "next/link";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import 'chartjs-adapter-date-fns';
-import { enUS } from 'date-fns/locale'; 
+import { enUS } from 'date-fns/locale';
+import Image from 'next/image';
 
 const CoinsTable = ({ data }) => {
   const calculatePercentageOfMaxSupply = (maxSupply, circulatingSupply) => {
@@ -51,7 +52,7 @@ const CoinsTable = ({ data }) => {
               </td>
               <td>{market_cap_rank}</td>
               <td>
-                <img src={image} alt="crypto-logo-image" />
+                <Image src={image} width={200} height={200} alt="crypto-logo-image" />
                 {`${name} ${symbol.toUpperCase()}`}
               </td>
               <td>{`$${current_price.toFixed(2)}`}</td>

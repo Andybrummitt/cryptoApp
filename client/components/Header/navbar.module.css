@@ -1,0 +1,8 @@
+.dataLinks {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    color: white;
+    background: blue;
+    list-style-type: none;
+}
